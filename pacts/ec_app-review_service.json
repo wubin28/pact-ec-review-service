@@ -1,0 +1,44 @@
+{
+    "provider": {
+        "name": "review_service"
+    },
+    "consumer": {
+        "name": "ec_app"
+    },
+    "interactions": [
+        {
+            "description": "A request for ratings",
+            "request": {
+                "method": "GET",
+                "path": "/ratings"
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "Content-Type": "application/json;charset=UTF-8"
+                },
+                "body": [
+                    {
+                        "rating": 3
+                    },
+                    {
+                        "rating": 4
+                    }
+                ]
+            },
+            "providerStates": [
+                {
+                    "name": "The ratings in Review service are ready"
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "pact-specification": {
+            "version": "3.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.5.0"
+        }
+    }
+}
