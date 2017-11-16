@@ -10,7 +10,15 @@
             "description": "A request for ratings",
             "request": {
                 "method": "GET",
-                "path": "/ratings"
+                "path": "/ratings",
+                "query": {
+                    "id": [
+                        "123"
+                    ],
+                    "name": [
+                        "ben"
+                    ]
+                }
             },
             "response": {
                 "status": 200,
