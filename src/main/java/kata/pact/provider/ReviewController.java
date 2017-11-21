@@ -1,24 +1,24 @@
 package kata.pact.provider;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@EnableAutoConfiguration
-@RestController
+@Controller
 public class ReviewController {
-    public static void main(String[] args) {
-        SpringApplication.run(ReviewController.class, args);
-    }
+    private ReviewService myResponseService;
 
-    @RequestMapping(value = "/ratings", method = RequestMethod.GET)
+    @RequestMapping(value = "/ratings", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public ResponseEntity<List<Rating>> getRatings() {
         ReviewService reviewService = new ReviewService();
         return reviewService.getRatings();
+    }
+
+    public ReviewController withMyResponseService(ReviewService myResponseService) {
+        this.myResponseService = myResponseService;
+        return this;
     }
 }

@@ -15,16 +15,11 @@
   </properties>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/com.reagroup/pact-jvm-provider-spring-mvc -->
     <dependency>
-      <groupId>au.com.dius</groupId>
-      <artifactId>pact-jvm-consumer-junit_2.11</artifactId>
-      <version>3.5.0</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-      <version>1.5.3.RELEASE</version>
+      <groupId>com.reagroup</groupId>
+      <artifactId>pact-jvm-provider-spring-mvc_2.10</artifactId>
+      <version>0.4.0</version>
     </dependency>
   </dependencies>
 
@@ -84,8 +79,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>

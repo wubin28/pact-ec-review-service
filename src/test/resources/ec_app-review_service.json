@@ -34,11 +34,7 @@
                     }
                 ]
             },
-            "providerStates": [
-                {
-                    "name": "The ratings in Review service are ready"
-                }
-            ]
+            "providerState": "The ratings in Review service are ready"
         }
     ],
     "metadata": {
