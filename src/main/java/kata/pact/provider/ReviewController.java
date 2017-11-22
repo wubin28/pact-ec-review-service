@@ -11,18 +11,19 @@ import static org.junit.Assert.assertEquals;
 
 @Controller
 public class ReviewController {
-    private ReviewService myResponseService;
+    private ReviewService reviewService;
 
     @RequestMapping(value = "/ratings", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public ResponseEntity<List<Rating>> getRatings(String id,String name) {
-        ReviewService reviewService = new ReviewService();
-//        assertEquals("1232", id);
-//        assertEquals("ben", name);
-        return reviewService.getRatings();
+        // the value of "id" and "name" could be retrieved from ec_app-review_service.json
+        // assertEquals("123", id);
+        // assertEquals("ben", name);
+
+        return new ReviewService().getRatings();
     }
 
-    public ReviewController withMyResponseService(ReviewService myResponseService) {
-        this.myResponseService = myResponseService;
+    public ReviewController withResponseService(ReviewService reviewService) {
+        this.reviewService = reviewService;
         return this;
     }
 }

@@ -1,8 +1,5 @@
 package kata.pact.provider;
 
-/**
- * Created by twer on 7/16/17.
- */
 public class Rating {
     private int rating;
 
