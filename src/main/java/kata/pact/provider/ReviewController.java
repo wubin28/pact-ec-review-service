@@ -16,8 +16,8 @@ public class ReviewController {
     @RequestMapping(value = "/ratings", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public ResponseEntity<List<Rating>> getRatings(String id,String name) {
         ReviewService reviewService = new ReviewService();
-        assertEquals("123", id);
-        assertEquals("ben", name);
+//        assertEquals("1232", id);
+//        assertEquals("ben", name);
         return reviewService.getRatings();
     }
 
