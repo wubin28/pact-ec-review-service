@@ -11,7 +11,7 @@ public class ReviewService {
         // use id and name to get the ratings from the backend
 
         List<Rating> result = new ArrayList<Rating>();
-        result.add(new Rating(123, "ben", 4));
+        result.add(new Rating(100, "yh", 100));
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
