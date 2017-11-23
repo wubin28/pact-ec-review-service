@@ -11,7 +11,7 @@
             "request": {
                 "method": "GET",
                 "path": "/ratings",
-                "query": "productId=01621&userName=ypwnbowy",
+                "query": "productId=3&userName=bk",
                 "matchingRules": {
                     "$.queryproductId": {
                         "match": "regex",
@@ -32,7 +32,7 @@
                     {
                         "productId": 100,
                         "rating": 100,
-                        "userName": "yh"
+                        "userName": "ben"
                     }
                 ],
                 "matchingRules": {
