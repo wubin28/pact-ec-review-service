@@ -7,11 +7,21 @@
     },
     "interactions": [
         {
-            "description": "A request for ratings",
+            "description": "A request for ratings for a product",
             "request": {
                 "method": "GET",
                 "path": "/ratings",
-                "query": "id=123&name=ben"
+                "query": "productId=123&userName=ben",
+                "matchingRules": {
+                    "$.queryproductId": {
+                        "match": "regex",
+                        "regex": "\\d+"
+                    },
+                    "$.queryuserName": {
+                        "match": "regex",
+                        "regex": "[a-z]+"
+                    }
+                }
             },
             "response": {
                 "status": 200,
@@ -20,12 +30,27 @@
                 },
                 "body": [
                     {
-                        "rating": 3
-                    },
-                    {
-                        "rating": 4
+                        "productId": 123,
+                        "rating": 4,
+                        "userName": "ben"
                     }
-                ]
+                ],
+                "matchingRules": {
+                    "$.body": {
+                        "match": "type",
+                        "min": 0
+                    },
+                    "$.body[*].productId": {
+                        "match": "integer"
+                    },
+                    "$.body[*].userName": {
+                        "match": "regex",
+                        "regex": "[a-z]+"
+                    },
+                    "$.body[*].rating": {
+                        "match": "integer"
+                    }
+                }
             },
             "providerState": "The ratings in Review service are ready"
         }

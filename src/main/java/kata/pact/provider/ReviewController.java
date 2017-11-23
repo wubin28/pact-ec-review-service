@@ -19,7 +19,7 @@ public class ReviewController {
         // assertEquals("123", id);
         // assertEquals("ben", name);
 
-        return new ReviewService().getRatings();
+        return new ReviewService().getRatings(id, name);
     }
 
     public ReviewController withResponseService(ReviewService reviewService) {
