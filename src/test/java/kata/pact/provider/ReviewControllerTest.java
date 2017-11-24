@@ -1,33 +1,53 @@
 package kata.pact.provider;
 
-import com.reagroup.pact.provider.PactFile;
-import com.reagroup.pact.provider.PactRunner;
-import com.reagroup.pact.provider.ProviderState;
+import au.com.dius.pact.provider.junit.Consumer;
+import au.com.dius.pact.provider.junit.Provider;
+import au.com.dius.pact.provider.junit.RestPactRunner;
+import au.com.dius.pact.provider.junit.State;
+import au.com.dius.pact.provider.junit.loader.PactFolder;
+import au.com.dius.pact.provider.junit.target.TestTarget;
+import au.com.dius.pact.provider.spring.target.MockMvcTarget;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
-@RunWith(PactRunner.class)
-@ContextConfiguration(locations = {"classpath:applicationContextPactTest.xml"})
-@PactFile("ec_app-review_service.json")
+import java.util.List;
+
+import static java.util.Arrays.asList;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Matchers.anyString;
+
+@RunWith(RestPactRunner.class)
+@Provider("review_service")
+@Consumer("ec_app")
+@PactFolder("src/test/resources")
 public class ReviewControllerTest {
 
-    @Autowired
-    private ReviewController reviewController;
+    @TestTarget
+    public final MockMvcTarget target = new MockMvcTarget();
 
+    private ReviewController reviewController = new ReviewController();
+
+    @Mock
     private ReviewService reviewService;
 
     @Before
     public void setUp() throws Exception {
-        reviewService = new ReviewService();
+        MockitoAnnotations.initMocks(this);
+
         reviewController.withResponseService(reviewService);
+        target.setControllers(reviewController);
     }
 
-    @ProviderState("The ratings in Review service are ready")
-    public ReviewController shouldGetRatings() {
-        // Pact will use the returned controller to call the production code
-        return reviewController;
-    }
+    @State("The ratings in Review service are ready")
+    public void shouldGetRatings() {
+        target.setRunTimes(1);
 
+        List<Rating> ratings = asList(new Rating(1, "qin", 2));
+        given(reviewService.getRatings(anyString(), anyString()))
+                .willReturn(new ResponseEntity<>(ratings, HttpStatus.OK));
+    }
 }
