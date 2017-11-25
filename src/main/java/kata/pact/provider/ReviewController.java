@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
 @Controller
 public class ReviewController {
     private ReviewService reviewService;
@@ -19,7 +17,7 @@ public class ReviewController {
         // assertEquals("123", id);
         // assertEquals("ben", name);
 
-        return new ReviewService().getRatings(id, name);
+        return reviewService.getRatings(id, name);
     }
 
     public ReviewController withResponseService(ReviewService reviewService) {
