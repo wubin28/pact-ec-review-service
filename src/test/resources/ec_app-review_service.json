@@ -50,7 +50,7 @@
                     },
                     "$.body[*].rating": {
                         "match": "regex",
-                        "regex": "^[0-5]$"
+                        "regex": "^[1-5]$"
                     }
                 }
             },

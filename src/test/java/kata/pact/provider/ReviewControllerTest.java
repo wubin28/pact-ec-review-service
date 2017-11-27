@@ -11,14 +11,9 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
-import java.util.List;
-
-import static java.util.Arrays.asList;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.when;
 
 @RunWith(RestPactRunner.class)
 @Provider("review_service")
@@ -32,22 +27,20 @@ public class ReviewControllerTest {
     private ReviewController reviewController = new ReviewController();
 
     @Mock
-    private ReviewService reviewService;
+    private ReviewService mockReviewService;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        reviewController.withResponseService(reviewService);
+        reviewController.withResponseService(mockReviewService);
         target.setControllers(reviewController);
     }
 
     @State("The ratings in Review service are ready")
     public void shouldGetRatings() {
-        target.setRunTimes(1);
-
-        List<Rating> ratings = asList(new Rating("234567", "qin", "5"));
-        given(reviewService.getRatings(anyString(), anyString()))
-                .willReturn(new ResponseEntity<>(ratings, HttpStatus.OK));
+        ReviewService reviewService = new ReviewService();
+        when(mockReviewService.getRatings(anyString(), anyString()))
+                .thenReturn(reviewService.getRatings("234567", "qin"));
     }
 }
