@@ -46,7 +46,7 @@ public class ReviewControllerTest {
     public void shouldGetRatings() {
         target.setRunTimes(1);
 
-        List<Rating> ratings = asList(new Rating(1, "qin", 2));
+        List<Rating> ratings = asList(new Rating("234567", "qin", "5"));
         given(reviewService.getRatings(anyString(), anyString()))
                 .willReturn(new ResponseEntity<>(ratings, HttpStatus.OK));
     }

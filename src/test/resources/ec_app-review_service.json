@@ -11,7 +11,7 @@
             "request": {
                 "method": "GET",
                 "path": "/ratings",
-                "query": "productId=3&userName=bk",
+                "query": "productId=8&userName=l",
                 "matchingRules": {
                     "$.queryproductId": {
                         "match": "regex",
@@ -30,8 +30,8 @@
                 },
                 "body": [
                     {
-                        "productId": 100,
-                        "rating": 100,
+                        "productId": "123456",
+                        "rating": "5",
                         "userName": "ben"
                     }
                 ],
@@ -41,14 +41,16 @@
                         "min": 0
                     },
                     "$.body[*].productId": {
-                        "match": "integer"
+                        "match": "regex",
+                        "regex": "^[0-9][0-9][0-9][0-9][0-9][0-9]$"
                     },
                     "$.body[*].userName": {
                         "match": "regex",
                         "regex": "[a-z]+"
                     },
                     "$.body[*].rating": {
-                        "match": "integer"
+                        "match": "regex",
+                        "regex": "^[0-5]$"
                     }
                 }
             },
