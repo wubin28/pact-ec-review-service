@@ -1,10 +1,12 @@
-# The two Pact Sample Projects Based on pact-jvm-consumer-junit_2.11 and pact-jvm-provider-spring_2.11. 
+# The Pact Sample Project Based on pact-jvm-provider-junit_2.11. 
 
-The repo "pact-ec-app" and "pact-ec-review-service" are the sample projects to show how to use the pact-jvm-consumer-junit_2.11 and the pact-jvm-provider-spring_2.11 correspondingly. 
+The repo "pact-ec-app" demonstrates an e-commerce application which depends on the "pact-ec-review-service" restful service. The former (as a consumer) requests the latter (as a provider) to provide rating information (such as a 3-star of a 5-star rating) for a product on the e-commerce website with product id and user name.
 
-The repo "pact-ec-app" demonstrates an e-commerce application which depends on the "pact-ec-review-service" restful service. The former (as a consumer) requests the latter (as a provider) to provide rating information (such as a 3-star of a 5-star rating) for a product on the e-commerce website.
+The repo "pact-ec-review-service" is the sample project to show how to use the pact-jvm-provider-junit_2.11. 
 
 # How to Run It
 
-
-Please see the [README.md](https://github.com/wubin28/pact-ec-app/blob/master/README.md) in the repo "pact-ec-app".
+0. Generate the pact (i.e. contract) of the sample application according to the README.md in the repo ["pact-ec-app"](https://github.com/wubin28/pact-ec-app/blob/master/README.md).
+1. Git clone the ["pact-ec-review-service"](https://github.com/wubin28/pact-ec-review-service) repo.
+3. Copy the pact file generated in the consumer side in step 0 to the folder "src/test/resources" of the provider project folder.
+4. Run command "mvn clean test"
