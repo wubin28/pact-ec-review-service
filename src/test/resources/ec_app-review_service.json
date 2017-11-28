@@ -11,16 +11,13 @@
             "request": {
                 "method": "GET",
                 "path": "/ratings",
-                "query": "productId=8&userName=l",
-                "matchingRules": {
-                    "$.queryproductId": {
-                        "match": "regex",
-                        "regex": "\\d+"
-                    },
-                    "$.queryuserName": {
-                        "match": "regex",
-                        "regex": "[a-z]+"
-                    }
+                "query": {
+                    "productId": [
+                        "123"
+                    ],
+                    "userName": [
+                        "ben"
+                    ]
                 }
             },
             "response": {
@@ -36,30 +33,60 @@
                     }
                 ],
                 "matchingRules": {
-                    "$.body": {
-                        "match": "type",
-                        "min": 0
-                    },
-                    "$.body[*].productId": {
-                        "match": "regex",
-                        "regex": "^[0-9][0-9][0-9][0-9][0-9][0-9]$"
-                    },
-                    "$.body[*].userName": {
-                        "match": "regex",
-                        "regex": "[a-z]+"
-                    },
-                    "$.body[*].rating": {
-                        "match": "regex",
-                        "regex": "^[1-5]$"
+                    "body": {
+                        "$": {
+                            "matchers": [
+                                {
+                                    "match": "type",
+                                    "min": 0
+                                }
+                            ],
+                            "combine": "AND"
+                        },
+                        "$[*].productId": {
+                            "matchers": [
+                                {
+                                    "match": "regex",
+                                    "regex": "^[0-9][0-9][0-9][0-9][0-9][0-9]$"
+                                }
+                            ],
+                            "combine": "AND"
+                        },
+                        "$[*].userName": {
+                            "matchers": [
+                                {
+                                    "match": "regex",
+                                    "regex": "[a-z]+"
+                                }
+                            ],
+                            "combine": "AND"
+                        },
+                        "$[*].rating": {
+                            "matchers": [
+                                {
+                                    "match": "regex",
+                                    "regex": "^[0-5]$"
+                                }
+                            ],
+                            "combine": "AND"
+                        }
                     }
                 }
             },
-            "providerState": "The ratings in Review service are ready"
+            "providerStates": [
+                {
+                    "name": "The ratings in Review service are ready",
+                    "params": {
+                        "productId": "123",
+                        "userName": "ben"
+                    }
+                }
+            ]
         }
     ],
     "metadata": {
         "pact-specification": {
-            "version": "2.0.0"
+            "version": "3.0.0"
         },
         "pact-jvm": {
             "version": "3.5.0"
