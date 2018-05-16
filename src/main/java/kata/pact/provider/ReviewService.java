@@ -8,7 +8,7 @@ public class ReviewService {
         // use id and name to get the ratings from the backend
 
         List<Rating> result = new ArrayList<Rating>();
-        result.add(new Rating("345678", "ben", "1"));
+        result.add(new Rating("123456", "ben", "5"));
         return result;
     }
 }

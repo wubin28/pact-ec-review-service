@@ -13,7 +13,7 @@
                 "path": "/ratings",
                 "query": {
                     "productId": [
-                        "123"
+                        "123456"
                     ],
                     "userName": [
                         "ben"
@@ -77,7 +77,7 @@
                 {
                     "name": "The ratings in Review service are ready",
                     "params": {
-                        "productId": "123",
+                        "productId": "123456",
                         "userName": "ben"
                     }
                 }
