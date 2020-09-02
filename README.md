@@ -1,8 +1,11 @@
-# The Pact Sample Project Based on pact-jvm-provider-junit_2.11. 
+# The Provider Sample Project Using Pact JVM Provider
 
-The repo "pact-ec-app" demonstrates an e-commerce application which depends on the "pact-ec-review-service" restful service. The former (as a consumer) requests the latter (as a provider) to provide rating information (such as a 3-star of a 5-star rating) for a product on the e-commerce website with product id and user name.
-
-The repo "pact-ec-review-service" is the sample project to show how to use the pact-jvm-provider-junit_2.11. 
+The repo "pact-ec-app" demonstrates an e-commerce application 
+which depends on the "pact-ec-review-service" restful service. 
+The former (as a consumer) sends requests to the latter 
+(as a provider) to get rating information (5-star rating) 
+for a product on the e-commerce website with product id 
+and user name.
 
 # How to Run It
 
