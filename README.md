@@ -12,4 +12,4 @@ and user name.
 0. Generate the pact (i.e. contract) of the sample application according to the README.md in the repo ["pact-ec-app"](https://github.com/wubin28/pact-ec-app).
 1. Git clone the ["pact-ec-review-service"](https://github.com/wubin28/pact-ec-review-service) repo.
 3. Copy the pact file generated in the consumer side in step 0 to the folder "src/test/resources" of the provider project folder.
-4. Run command "mvn clean test"
+4. Run command "./mvnw clean test"
